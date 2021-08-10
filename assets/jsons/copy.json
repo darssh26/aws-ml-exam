@@ -1,0 +1,52 @@
+{
+  "title": "Machine Learning Specialty Exam Preparation",
+  "questions": [
+    {
+      "type": "mcq",
+      "main": "",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": ""
+        },
+        {
+          "id": 2,
+          "value": ""
+        },
+        {
+          "id": 3,
+          "value": ""
+        },
+        {
+          "id": 4,
+          "value": ""
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "main": "",
+      "comment": "",
+      "select": [1, 2],
+      "options": [
+        {
+          "id": 1,
+          "value": ""
+        },
+        {
+          "id": 2,
+          "value": ""
+        },
+        {
+          "id": 3,
+          "value": ""
+        },
+        {
+          "id": 4,
+          "value": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "title": "Machine Learning Specialty Exam Preparation",
+  "questions": [
+    {
+      "type": "multi",
+      "main": "An insurance company is developing a new device for vehicles that uses a camera to observe drivers' behavior and alert them when they appear distracted. The company created approximately 10,000 training images in a controlled environment that a Machine Learning Specialist will use to train and evaluate machine learning models.   During the model evaluation the Specialist notices that the training error rate diminishes faster as the number of epochs increases and the model is not accurately inferring on the unseen test images.   Which of the following should be used to resolve this issue? (Select TWO)",
+      "comment": "",
+      "select": [1, 2],
+      "options": [
+        {
+          "id": 1,
+          "value": "Add L2 regularization to the model."
+        },
+        {
+          "id": 2,
+          "value": "Perform data augmentation on the training data."
+        },
+        {
+          "id": 3,
+          "value": "Make the neural network architecture complex."
+        },
+        {
+          "id": 4,
+          "value": "Use gradient checking in the model."
+        },
+        {
+          "id": 5,
+          "value": "Add vanishing gradient to the model."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "For the given confusion matrix, what is the recall and precision of the model?---test1.png---",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Recall = 0.92 Precision = 0.8"
+        },
+        {
+          "id": 2,
+          "value": "Recall = 0.92 Precision = 0.84"
+        },
+        {
+          "id": 3,
+          "value": "Recall = 0.84 Precision = 0.8"
+        },
+        {
+          "id": 4,
+          "value": "Recall = 0.8 Precision = 0.92"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A financial services company is building a robust serverless data lake on Amazon S3. The data lake should be flexible and meet the following requirements: Support querying old and new data on Amazon S3 through Amazon Athena and Amazon Redshift Spectrum. Support event-driven ETL pipelines. Provide a quick and easy way to understand metadata. Which approach meets these requirements?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Use an AWS Glue crawler to crawl S3 data, an AWS Lambda function to trigger an AWS Glue ETL job, and an AWS Glue Data catalog to search and discover metadata."
+        },
+        {
+          "id": 2,
+          "value": "Use an AWS Glue crawler to crawl S3 data, an Amazon CloudWatch alarm to trigger an AWS Glue ETL job, and an external Apache Hive metastore to search and discover metadata."
+        },
+        {
+          "id": 3,
+          "value": "Use an AWS Glue crawler to crawl S3 data, an AWS Lambda function to trigger an AWS Batch job, and an external Apache Hive metastore to search and discover metadata."
+        },
+        {
+          "id": 4,
+          "value": "Use an AWS Glue crawler to crawl S3 data, an Amazon CloudWatch alarm to trigger an AWS Batch job, and an AWS Glue Data Catalog to search and discover metadata."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A Machine Learning Specialist is assigned a TensorFlow project using Amazon SageMaker for training, and needs to continue working for an extended period with no Wi-Fi access.   Which approach should the Specialist use to continue working?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Download the TensorFlow Docker container used in Amazon SageMaker from GitHub to their local environment, and use the Amazon SageMaker Python SDK to test the code."
+        },
+        {
+          "id": 2,
+          "value": "Install Python 3 and boto3 on their laptop and continue the code development using that environment."
+        },
+        {
+          "id": 3,
+          "value": "Download TensorFlow from tensorflow.org to emulate the TensorFlow kernel in the SageMaker environment."
+        },
+        {
+          "id": 4,
+          "value": "Download the SageMaker notebook to their local environment then install Jupyter Notebooks on their laptop and continue the development in a local notebook."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A Machine Learning Specialist needs to be able to ingest streaming data and store it in Apache Parquet files for exploration and analysis.   Which of the following services would both ingest and store this data in the correct format?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Amazon Kinesis Data Firehose"
+        },
+        {
+          "id": 2,
+          "value": "Amazon Kinesis Data Streams"
+        },
+        {
+          "id": 3,
+          "value": "Amazon Kinesis Data Streams"
+        },
+        {
+          "id": 4,
+          "value": "Amazon Kinesis Data Analytics"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A Machine Learning Specialist works for a credit card processing company and needs to predict which transactions may be fraudulent in near-real time. Specifically, the Specialist must train a model that returns the probability that a given transaction may be fraudulent.   How should the Specialist frame this business problem?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Binary classification"
+        },
+        {
+          "id": 2,
+          "value": "Regression classification"
+        },
+        {
+          "id": 3,
+          "value": "Multi-category classification"
+        },
+        {
+          "id": 4,
+          "value": "Streaming classification"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A security and networking company wants to use ML to flag certain IP addresses that have been known to send spam and phishing information. The company wants to build an ML model based on previous user feedback indicating whether specific IP addresses have been connected to a website designed for spam and phishing. What is the simplest solution that the company can implement?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "A rule-based solution should be used instead of ML"
+        },
+        {
+          "id": 2,
+          "value": "Classification"
+        },
+        {
+          "id": 3,
+          "value": "Regression"
+        },
+        {
+          "id": 4,
+          "value": "Natural language processing (NLP)"
+        }
+      ]
+    }
+  ]
+}
