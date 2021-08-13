@@ -44,18 +44,26 @@ class _PracticeScreenState extends State<PracticeScreen> {
 
   //to add review feature
   late List<QuestionProvider> questions;
+  late bool markedForReview;
+  List<QuestionProvider> markedQuestions = [];
+  late int markedScore;
+  late bool isReviewing;
 
   @override
   void initState() {
     super.initState();
     index = 0;
     score = 0;
-    total = widget.questions.length;
+    markedScore = 0;
+    questions = widget.questions;
+    total = questions.length;
 
     red = Color(0xFFFF4848).withOpacity(0.7);
     green = Color(0xFF29BB89).withOpacity(0.7);
 
     player.init();
+
+    isReviewing = false;
   }
 
   @override
@@ -66,13 +74,15 @@ class _PracticeScreenState extends State<PracticeScreen> {
 
   void getQuestion() {
     if (isNew) {
-      if (widget.questions[index].runtimeType == MCQProvider) {
-        mcq = widget.questions[index] as MCQProvider;
+      markedForReview = false;
+      if (questions[index].runtimeType == MCQProvider) {
+        mcq = questions[index] as MCQProvider;
         options = mcq?.getOptions() ?? <Option>[];
         options.shuffle();
+        selectedValue = -1;
         isNew = false;
-      } else if (widget.questions[index].runtimeType == MultiSelectProvider) {
-        multi = widget.questions[index] as MultiSelectProvider;
+      } else if (questions[index].runtimeType == MultiSelectProvider) {
+        multi = questions[index] as MultiSelectProvider;
         select = multi?.select ?? [];
         options = multi?.getOptions() ?? <Option>[];
         bools = List.generate(options.length, (index) => false);
@@ -110,10 +120,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
             Row(
               children: [
                 IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icon(Icons.arrow_back)),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back),
+                ),
                 Expanded(
                   child: MyHeader(index, total, score, widget.mode),
                 ),
@@ -136,8 +147,40 @@ class _PracticeScreenState extends State<PracticeScreen> {
     );
   }
 
+  Widget buildMarkForReview() {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          if (markedForReview) {
+            markedQuestions.remove(questions[index]);
+          } else {
+            markedQuestions.add(questions[index]);
+          }
+          markedForReview = !markedForReview;
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.only(right: 5),
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: markedForReview ? 1 : 0,
+              child: Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+            ),
+            Icon(
+              Icons.star_border_outlined,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget buildButton() {
-    if (widget.questions[index].runtimeType == MCQProvider) {
+    if (questions[index].runtimeType == MCQProvider) {
       return IgnorePointer(
         ignoring: selectedValue == -1 ? true : false,
         child: button("mcq"),
@@ -156,17 +199,19 @@ class _PracticeScreenState extends State<PracticeScreen> {
         selectedBoxes.sort();
         bool success = listEquals(select, selectedBoxes);
         if (success) {
-          print("success");
           playSound("happy");
-          score++;
+          if (!markedForReview) {
+            score++;
+          } else {
+            markedScore++;
+          }
         } else {
-          print("false");
           playSound("sad");
         }
         submitted = true;
       });
     } else {
-      if (index < widget.questions.length - 1) {
+      if (index < total - 1) {
         setState(() {
           submitted = false;
           isNew = true;
@@ -183,28 +228,89 @@ class _PracticeScreenState extends State<PracticeScreen> {
       setState(() {
         if (selectedValue == 1) {
           playSound("happy");
-          score++;
+          if (!markedForReview) {
+            score++;
+          } else {
+            markedScore++;
+          }
         } else {
           playSound("sad");
         }
         submitted = true;
-
-        if (index == widget.questions.length - 1) {
+        if (index == total - 1) {
           done = true;
         }
       });
     } else {
-      if (index < widget.questions.length - 1) {
+      if (index < total - 1) {
         setState(() {
-          selectedValue = -1;
           submitted = false;
           isNew = true;
           index++;
         });
       } else {
-        goToResultScreen();
+        if (widget.mode == Mode.EXAM) {
+          if (markedQuestions.length > 0) {
+            _showAlertDialog();
+          } else {
+            goToResultScreen();
+          }
+        } else {
+          goToResultScreen();
+        }
       }
     }
+  }
+
+  void _showAlertDialog() {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return StatefulBuilder(builder: (context, _setState) {
+          return AlertDialog(
+            title: Text(
+              "Finish Exam",
+              style: GoogleFonts.roboto(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            content: Container(
+              height: size.height * 0.15,
+              child: Text(
+                  "You have marked ${markedQuestions.length} questions for review. Do you want to review them?"),
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                child: Text(
+                  'Yes',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  setState(() {
+                    Navigator.of(context).pop();
+                    questions = markedQuestions;
+                    markedQuestions = [];
+                    total = questions.length;
+                    index = 0;
+                    submitted = false;
+                    done = false;
+                    isNew = true;
+                    isReviewing = true;
+                  });
+                },
+              ),
+              ElevatedButton(
+                child: Text('No'),
+                onPressed: () {
+                  score += markedScore;
+                  goToResultScreen();
+                },
+              )
+            ],
+          );
+        });
+      },
+    );
   }
 
   Widget button(String questionType) {
@@ -214,13 +320,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
       margin: EdgeInsets.all(10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        //color: Colors.white,
-        /* border: Border.all(
-          color: Colors.blue,
-          width: 1,
-        ), */
         borderRadius: BorderRadius.circular(4),
-        //boxShadow: [BoxShadow()],
       ),
       child: NeumorphicButton(
         onPressed: () {
@@ -257,12 +357,6 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Container(
       width: size.width,
       margin: EdgeInsets.all(10),
-      //padding: EdgeInsets.all(10),
-      /* decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [BoxShadow(color: Colors.grey)],
-      ), */
       child: Neumorphic(
         style: NeumorphicStyle(
           shape: NeumorphicShape.flat,
@@ -291,19 +385,6 @@ class _PracticeScreenState extends State<PracticeScreen> {
   Widget buildMultiSelectOption(int key, int id, String title) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(
-          /* color: widget.mode == Mode.PRACTICE
-            ? submitted
-                ? select.contains(id)
-                    ? green
-                    : selectedBoxes.contains(id)
-                        ? red
-                        : Colors.white
-                : Colors.white
-            : Colors.white,
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(5), */
-          ),
       child: Neumorphic(
         style: NeumorphicStyle(
           shape: NeumorphicShape.flat,
@@ -324,18 +405,17 @@ class _PracticeScreenState extends State<PracticeScreen> {
           value: bools[key],
           title: Text(title),
           onChanged: (val) {
-            setState(() {
-              bools[key] = val;
-              print(bools);
-            });
+            if (!submitted) {
+              setState(() {
+                bools[key] = val;
+              });
 
-            if (val == true) {
-              selectedBoxes.add(id);
-            } else {
-              selectedBoxes.remove(id);
+              if (val == true) {
+                selectedBoxes.add(id);
+              } else {
+                selectedBoxes.remove(id);
+              }
             }
-
-            print(selectedBoxes);
           },
           controlAffinity: ListTileControlAffinity.leading,
         ),
@@ -347,12 +427,6 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Container(
       width: size.width,
       margin: EdgeInsets.all(10),
-      //padding: EdgeInsets.all(10),
-      /* decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [BoxShadow(color: Colors.grey)],
-      ), */
       child: Neumorphic(
         style: NeumorphicStyle(
           shape: NeumorphicShape.flat,
@@ -387,24 +461,30 @@ class _PracticeScreenState extends State<PracticeScreen> {
         style: GoogleFonts.roboto(
           fontSize: size.width * 0.04,
           fontWeight: FontWeight.w500,
+          height: 1.3,
         ),
-        children: subs.map((String e) {
-          if (e.contains(".png") || e.contains(".jpg")) {
-            print(e);
-            return WidgetSpan(
-              child: Container(
-                width: size.width,
-                height: size.height * 0.2,
-                padding: EdgeInsets.all(5),
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: MediaFinder.getImage(e),
+        children: [
+          if (widget.mode == Mode.EXAM && !isReviewing && !submitted)
+            WidgetSpan(
+              child: buildMarkForReview(),
+            ),
+          ...subs.map((String e) {
+            if (e.contains(".png") || e.contains(".jpg")) {
+              return WidgetSpan(
+                child: Container(
+                  width: size.width,
+                  height: size.height * 0.2,
+                  padding: EdgeInsets.all(5),
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: MediaFinder.getImage(e),
+                  ),
                 ),
-              ),
-            );
-          }
-          return TextSpan(text: e);
-        }).toList(),
+              );
+            }
+            return TextSpan(text: e);
+          }).toList(),
+        ],
       ),
     );
   }
@@ -412,21 +492,6 @@ class _PracticeScreenState extends State<PracticeScreen> {
   Widget buildMCQOption(int value, String title) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration(
-          /* color: widget.mode == Mode.PRACTICE
-            ? submitted
-                ? value == selectedValue
-                    ? value == 1
-                        ? green
-                        : red
-                    : value == 1
-                        ? green
-                        : Colors.white
-                : null
-            : null, */
-          //border: Border.all(),
-          //borderRadius: BorderRadius.circular(5),
-          ),
       child: Neumorphic(
         style: NeumorphicStyle(
           shape: NeumorphicShape.flat,
@@ -450,9 +515,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
           groupValue: selectedValue,
           title: Text(title),
           onChanged: (_) {
-            setState(() {
-              selectedValue = value;
-            });
+            if (!submitted) {
+              setState(() {
+                selectedValue = value;
+              });
+            }
           },
         ),
       ),

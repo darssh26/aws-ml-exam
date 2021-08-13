@@ -19,10 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
   late HomeProvider provider;
 
   bool? isRandom = false;
-
   int? dropValue;
-
   late Map<String, int> items;
+
+  //65 for real life Exam simulation
+  int numberOfExamQuestions = 65;
+
+  double low = 0, high = 100;
 
   @override
   void initState() {
@@ -76,28 +79,32 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       SizedBox(height: size.height * 0.01),
-                      DropdownButton(
-                        dropdownColor: Color(0xFFdde6e8),
-                        icon: Icon(Icons.question_answer_sharp),
-                        value: dropValue,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("All Questions"),
-                            value: provider.questions.length,
-                          ),
-                          ...items.entries.map((e) {
-                            return DropdownMenuItem(
-                              child: Text(e.key),
-                              value: e.value,
-                            );
-                          }).toList()
-                        ],
-                        onChanged: (int? value) {
-                          setState(() {
-                            dropValue = value;
-                          });
-                        },
-                        hint: Text("Select Questions"),
+                      Container(
+                        width: size.width * 0.5,
+                        child: DropdownButton(
+                          isExpanded: true,
+                          dropdownColor: Color(0xFFdde6e8),
+                          icon: Icon(Icons.question_answer_sharp),
+                          value: dropValue,
+                          items: [
+                            DropdownMenuItem(
+                              child: Text("All Questions"),
+                              value: provider.questions.length,
+                            ),
+                            ...items.entries.map((e) {
+                              return DropdownMenuItem(
+                                child: Text(e.key),
+                                value: e.value,
+                              );
+                            }).toList()
+                          ],
+                          onChanged: (int? value) {
+                            setState(() {
+                              dropValue = value;
+                            });
+                          },
+                          hint: Text("Select Questions"),
+                        ),
                       ),
                       IntrinsicWidth(
                         child: CheckboxListTile(
@@ -112,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       SizedBox(height: 10),
+                      //buildRange(),
                       ElevatedButton(
                         onPressed: () {
                           print(dropValue);
@@ -164,8 +172,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () {
-                          List<QuestionProvider> questions =
-                              provider.getQuestions(65, true);
+                          List<QuestionProvider> questions = provider
+                              .getQuestions(numberOfExamQuestions, true);
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>
                                 PracticeScreen(questions, Mode.EXAM),
@@ -188,6 +196,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildRange() {
+    return Row(
+      children: [
+        Text("Start"),
+      ],
     );
   }
 }

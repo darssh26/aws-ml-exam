@@ -31,10 +31,6 @@ class SoundPlayer {
     _player.dispose();
   }
 
-  void stopSound() async {
-    //await audioPlayer.stopPlayer();
-  }
-
   void playHappySound() {
     playSound("rightSound.mp3");
   }

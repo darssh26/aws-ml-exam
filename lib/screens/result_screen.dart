@@ -1,3 +1,4 @@
+import 'package:awsmlexam/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -27,6 +28,11 @@ class _ResultScreenState extends State<ResultScreen> {
     }
   }
 
+  void goToHomeScreen() {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -48,7 +54,7 @@ class _ResultScreenState extends State<ResultScreen> {
           iconTheme: IconThemeData(color: Colors.black87),
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              goToHomeScreen();
             },
             icon: Icon(Icons.arrow_back),
           ),
@@ -62,7 +68,7 @@ class _ResultScreenState extends State<ResultScreen> {
               buildGuage(),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  goToHomeScreen();
                 },
                 child: Text("Keep Going"),
               )

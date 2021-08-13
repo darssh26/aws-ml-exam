@@ -675,29 +675,6 @@
     },
     {
       "type": "mcq",
-      "main": "A manufacturing company has structured and unstructured data stored in an Amazon S3 bucket. A Machine Learning Specialist wants to use SQL to run queries on this data.   Which solution requires the LEAST effort to be able to query this data?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Use AWS Glue to catalogue the data and Amazon Athena to run queries."
-        },
-        {
-          "id": 2,
-          "value": "Use AWS Lambda to transform the data and Amazon Kinesis Data Analytics to run queries."
-        },
-        {
-          "id": 3,
-          "value": "Use AWS Batch to run ETL on the data and Amazon Aurora to run the queries."
-        },
-        {
-          "id": 4,
-          "value": "Use AWS Data Pipeline to transform the data and Amazon RDS to run queries."
-        }
-      ]
-    },
-    {
-      "type": "mcq",
       "main": "You wish to use a SageMaker notebook within a VPC. SageMaker notebook instances are Internet-enabled, creating a potential security hole in your VPC.   How would you use SageMaker within a VPC without opening up Internet access?",
       "comment": "",
       "options": [
@@ -1467,7 +1444,7 @@
     },
     {
       "type": "multi",
-      "main": "A Dats Scientist at a retail company is using Amazon SageMaker to classify social media posts that mention the company into one of two categories: Posts that require a response from the company, and posts that do not. The Data Scientist is using a training dataset of 10,000 posts, which contains the timestamp, author, and full text of each post. However, the Data Scientist is missing the target labels that are required for training. Which approach can the Data Scientist take to create valid target label data? (Select TWO.)",
+      "main": "A Data Scientist at a retail company is using Amazon SageMaker to classify social media posts that mention the company into one of two categories: Posts that require a response from the company, and posts that do not. The Data Scientist is using a training dataset of 10,000 posts, which contains the timestamp, author, and full text of each post. However, the Data Scientist is missing the target labels that are required for training. Which approach can the Data Scientist take to create valid target label data? (Select TWO.)",
       "comment": "",
       "select": [1, 2],
       "options": [
@@ -1817,29 +1794,6 @@
         {
           "id": 4,
           "value": "Dimensionality reduction"
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "A manufacturing company has structured and unstructured data stored in an Amazon S3 bucket. A Machine Learning Specialist wants to use SQL to run queries on this data.   Which solution requires the LEAST effort to be able to query this data?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Use AWS Glue to catalogue the data and Amazon Athena to run queries."
-        },
-        {
-          "id": 2,
-          "value": "Use AWS Lambda to transform the data and Amazon Kinesis Data Analytics to run queries."
-        },
-        {
-          "id": 3,
-          "value": "Use AWS Batch to run ETL on the data and Amazon Aurora to run the queries."
-        },
-        {
-          "id": 4,
-          "value": "Use AWS Data Pipeline to transform the data and Amazon RDS to run queries."
         }
       ]
     },
@@ -4095,122 +4049,6 @@
           "value": "Bundle the NVIDIA drivers with the Docker image."
         }
       ]
-    },
-    {
-      "type": "mcq",
-      "main": "",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": ""
-        },
-        {
-          "id": 2,
-          "value": ""
-        },
-        {
-          "id": 3,
-          "value": ""
-        },
-        {
-          "id": 4,
-          "value": ""
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": ""
-        },
-        {
-          "id": 2,
-          "value": ""
-        },
-        {
-          "id": 3,
-          "value": ""
-        },
-        {
-          "id": 4,
-          "value": ""
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": ""
-        },
-        {
-          "id": 2,
-          "value": ""
-        },
-        {
-          "id": 3,
-          "value": ""
-        },
-        {
-          "id": 4,
-          "value": ""
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": ""
-        },
-        {
-          "id": 2,
-          "value": ""
-        },
-        {
-          "id": 3,
-          "value": ""
-        },
-        {
-          "id": 4,
-          "value": ""
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": ""
-        },
-        {
-          "id": 2,
-          "value": ""
-        },
-        {
-          "id": 3,
-          "value": ""
-        },
-        {
-          "id": 4,
-          "value": ""
-        }
-      ]
     }
-  
   ]
 }

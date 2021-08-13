@@ -15,7 +15,6 @@ class MyHeader extends StatelessWidget {
       width: double.infinity,
       height: 30,
       margin: EdgeInsets.all(8),
-      //padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(5),

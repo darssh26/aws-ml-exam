@@ -96,16 +96,4 @@ class MediaFinder {
 
     return image;
   }
-
-  /* static getVideoPlayerController(String name) {
-    VideoPlayerController controller;
-    String filePath = dir.path + '/videos/' + name;
-
-    if (io.File(filePath).existsSync()) {
-      controller = VideoPlayerController.file(File(filePath));
-    } else {
-      controller = VideoPlayerController.asset('assets/videos/$name');
-    }
-    return controller;
-  } */
 }
