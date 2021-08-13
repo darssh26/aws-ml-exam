@@ -3,6 +3,7 @@ import 'package:awsmlexam/providers/home_provider.dart';
 import 'package:awsmlexam/providers/question_provider.dart';
 import 'package:awsmlexam/screens/practice_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -48,89 +49,93 @@ class _HomeScreenState extends State<HomeScreen> {
     provider = Provider.of<HomeProvider>(context, listen: false);
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFdde6e8),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: size.height * 0.4,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(4),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 6,
-                  )
-                ],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Practice makes perfect!",
-                    style: GoogleFonts.roboto(
-                      fontSize: size.width * 0.04,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(height: size.height * 0.01),
-                  DropdownButton(
-                    value: dropValue,
-                    items: [
-                      DropdownMenuItem(
-                        child: Text("All Questions"),
-                        value: provider.questions.length,
-                      ),
-                      ...items.entries.map((e) {
-                        return DropdownMenuItem(
-                          child: Text(e.key),
-                          value: e.value,
-                        );
-                      }).toList()
-                    ],
-                    onChanged: (int? value) {
-                      setState(() {
-                        dropValue = value;
-                      });
-                    },
-                    hint: Text("Select Questions"),
-                  ),
-                  IntrinsicWidth(
-                    child: CheckboxListTile(
-                      onChanged: (value) {
-                        setState(() {
-                          isRandom = value;
-                        });
-                      },
-                      value: isRandom,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      title: Text("Random Questions"),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      print(dropValue);
-                      List<QuestionProvider> questions = provider.getQuestions(
-                          dropValue ?? -1, isRandom ?? false);
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              PracticeScreen(questions, Mode.PRACTICE),
+              child: Neumorphic(
+                style: NeumorphicStyle(
+                  shape: NeumorphicShape.flat,
+                  lightSource: LightSource.top,
+                  depth: 5,
+                  surfaceIntensity: 0.8,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Let's Practise",
+                        style: GoogleFonts.roboto(
+                          fontSize: size.width * 0.04,
+                          fontWeight: FontWeight.w500,
                         ),
-                      );
-                    },
-                    child: Text(
-                      "Start",
-                      style: GoogleFonts.roboto(
-                        fontSize: size.width * 0.04,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
                       ),
-                    ),
+                      SizedBox(height: size.height * 0.01),
+                      DropdownButton(
+                        dropdownColor: Color(0xFFdde6e8),
+                        icon: Icon(Icons.question_answer_sharp),
+                        value: dropValue,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text("All Questions"),
+                            value: provider.questions.length,
+                          ),
+                          ...items.entries.map((e) {
+                            return DropdownMenuItem(
+                              child: Text(e.key),
+                              value: e.value,
+                            );
+                          }).toList()
+                        ],
+                        onChanged: (int? value) {
+                          setState(() {
+                            dropValue = value;
+                          });
+                        },
+                        hint: Text("Select Questions"),
+                      ),
+                      IntrinsicWidth(
+                        child: CheckboxListTile(
+                          onChanged: (value) {
+                            setState(() {
+                              isRandom = value;
+                            });
+                          },
+                          value: isRandom,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          title: Text("Random Questions"),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          print(dropValue);
+                          List<QuestionProvider> questions = provider
+                              .getQuestions(dropValue ?? -1, isRandom ?? false);
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  PracticeScreen(questions, Mode.PRACTICE),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Start",
+                          style: GoogleFonts.roboto(
+                            fontSize: size.width * 0.04,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
             SizedBox(

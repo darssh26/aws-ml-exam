@@ -9,6 +9,7 @@ import 'package:awsmlexam/utils/sound_player.dart';
 import 'package:awsmlexam/widgets/header.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PracticeScreen extends StatefulWidget {
@@ -41,6 +42,9 @@ class _PracticeScreenState extends State<PracticeScreen> {
   bool done = false;
   late Color red, green;
 
+  //to add review feature
+  late List<QuestionProvider> questions;
+
   @override
   void initState() {
     super.initState();
@@ -48,8 +52,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
     score = 0;
     total = widget.questions.length;
 
-    red = Color(0xFFFF4848);
-    green = Color(0xFF29BB89);
+    red = Color(0xFFFF4848).withOpacity(0.7);
+    green = Color(0xFF29BB89).withOpacity(0.7);
 
     player.init();
   }
@@ -72,6 +76,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
         select = multi?.select ?? [];
         options = multi?.getOptions() ?? <Option>[];
         bools = List.generate(options.length, (index) => false);
+        selectedBoxes = [];
         options.shuffle();
         isNew = false;
       }
@@ -99,6 +104,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
     getQuestion();
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFdde6e8),
         body: Column(
           children: [
             Row(
@@ -134,101 +140,107 @@ class _PracticeScreenState extends State<PracticeScreen> {
     if (widget.questions[index].runtimeType == MCQProvider) {
       return IgnorePointer(
         ignoring: selectedValue == -1 ? true : false,
-        child: InkWell(
-          onTap: () {
-            if (submitted == false) {
-              setState(() {
-                if (selectedValue == 1) {
-                  playSound("happy");
-                  score++;
-                } else {
-                  playSound("sad");
-                }
-                submitted = true;
-
-                if (index == widget.questions.length - 1) {
-                  done = true;
-                }
-              });
-            } else {
-              if (index < widget.questions.length - 1) {
-                setState(() {
-                  selectedValue = -1;
-                  submitted = false;
-                  isNew = true;
-                  index++;
-                });
-              } else {
-                goToResultScreen();
-              }
-            }
-          },
-          child: button(),
-        ),
+        child: button("mcq"),
       );
     }
     return IgnorePointer(
       ignoring: selectedBoxes.length != select.length ? true : false,
-      child: InkWell(
-        onTap: () {
-          if (submitted == false) {
-            setState(() {
-              select.sort();
-              selectedBoxes.sort();
-              bool success = listEquals(select, selectedBoxes);
-              if (success) {
-                print("success");
-                playSound("happy");
-                score++;
-              } else {
-                print("false");
-                playSound("sad");
-              }
-              submitted = true;
-            });
-          } else {
-            if (index < widget.questions.length - 1) {
-              setState(() {
-                submitted = false;
-                isNew = true;
-                index++;
-              });
-            } else {
-              goToResultScreen();
-            }
-          }
-        },
-        child: button(),
-      ),
+      child: button("multi"),
     );
   }
 
-  Widget button() {
+  void multiSubmit() {
+    if (submitted == false) {
+      setState(() {
+        select.sort();
+        selectedBoxes.sort();
+        bool success = listEquals(select, selectedBoxes);
+        if (success) {
+          print("success");
+          playSound("happy");
+          score++;
+        } else {
+          print("false");
+          playSound("sad");
+        }
+        submitted = true;
+      });
+    } else {
+      if (index < widget.questions.length - 1) {
+        setState(() {
+          submitted = false;
+          isNew = true;
+          index++;
+        });
+      } else {
+        goToResultScreen();
+      }
+    }
+  }
+
+  void mcqSubmit() {
+    if (submitted == false) {
+      setState(() {
+        if (selectedValue == 1) {
+          playSound("happy");
+          score++;
+        } else {
+          playSound("sad");
+        }
+        submitted = true;
+
+        if (index == widget.questions.length - 1) {
+          done = true;
+        }
+      });
+    } else {
+      if (index < widget.questions.length - 1) {
+        setState(() {
+          selectedValue = -1;
+          submitted = false;
+          isNew = true;
+          index++;
+        });
+      } else {
+        goToResultScreen();
+      }
+    }
+  }
+
+  Widget button(String questionType) {
     return Container(
-      width: size.width * 0.2,
+      width: size.width * 0.25,
       height: size.height * 0.055,
-      alignment: Alignment.center,
-      padding: EdgeInsets.all(5),
       margin: EdgeInsets.all(10),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
+        //color: Colors.white,
+        /* border: Border.all(
           color: Colors.blue,
           width: 1,
-        ),
+        ), */
         borderRadius: BorderRadius.circular(4),
-        boxShadow: [BoxShadow()],
+        //boxShadow: [BoxShadow()],
       ),
-      child: Text(
-        submitted
-            ? done
-                ? "Finish"
-                : "Next"
-            : "Submit",
-        style: GoogleFonts.roboto(
-          fontSize: size.width * 0.04,
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
+      child: NeumorphicButton(
+        onPressed: () {
+          if (questionType == "mcq") {
+            mcqSubmit();
+          } else {
+            multiSubmit();
+          }
+        },
+        child: Text(
+          submitted
+              ? done
+                  ? "Finish"
+                  : "Next"
+              : "Submit",
+          style: GoogleFonts.roboto(
+            fontSize: size.width * 0.04,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
         ),
       ),
     );
@@ -245,22 +257,33 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Container(
       width: size.width,
       margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
+      //padding: EdgeInsets.all(10),
+      /* decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
         boxShadow: [BoxShadow(color: Colors.grey)],
-      ),
-      child: Column(
-        children: [
-          buildMain(multi?.main ?? ""),
-          SizedBox(
-            height: size.height * 0.04,
+      ), */
+      child: Neumorphic(
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.flat,
+          lightSource: LightSource.top,
+          depth: 5,
+          surfaceIntensity: 0.8,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10, left: 8, right: 8),
+          child: Column(
+            children: [
+              buildMain(multi?.main ?? ""),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              ...options.asMap().entries.map((e) {
+                return buildMultiSelectOption(e.key, e.value.id, e.value.value);
+              }).toList()
+            ],
           ),
-          ...options.asMap().entries.map((e) {
-            return buildMultiSelectOption(e.key, e.value.id, e.value.value);
-          }).toList()
-        ],
+        ),
       ),
     );
   }
@@ -269,7 +292,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: widget.mode == Mode.PRACTICE
+          /* color: widget.mode == Mode.PRACTICE
             ? submitted
                 ? select.contains(id)
                     ? green
@@ -279,26 +302,43 @@ class _PracticeScreenState extends State<PracticeScreen> {
                 : Colors.white
             : Colors.white,
         border: Border.all(),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: CheckboxListTile(
-        value: bools[key],
-        title: Text(title),
-        onChanged: (val) {
-          setState(() {
-            bools[key] = val;
-            print(bools);
-          });
+        borderRadius: BorderRadius.circular(5), */
+          ),
+      child: Neumorphic(
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.flat,
+          lightSource: LightSource.top,
+          depth: 3,
+          surfaceIntensity: 0.8,
+          color: widget.mode == Mode.PRACTICE
+              ? submitted
+                  ? select.contains(id)
+                      ? green
+                      : selectedBoxes.contains(id)
+                          ? red
+                          : null
+                  : null
+              : null,
+        ),
+        child: CheckboxListTile(
+          value: bools[key],
+          title: Text(title),
+          onChanged: (val) {
+            setState(() {
+              bools[key] = val;
+              print(bools);
+            });
 
-          if (val == true) {
-            selectedBoxes.add(id);
-          } else {
-            selectedBoxes.remove(id);
-          }
+            if (val == true) {
+              selectedBoxes.add(id);
+            } else {
+              selectedBoxes.remove(id);
+            }
 
-          print(selectedBoxes);
-        },
-        controlAffinity: ListTileControlAffinity.leading,
+            print(selectedBoxes);
+          },
+          controlAffinity: ListTileControlAffinity.leading,
+        ),
       ),
     );
   }
@@ -307,21 +347,33 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Container(
       width: size.width,
       margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5),
-          boxShadow: [BoxShadow(color: Colors.grey)]),
-      child: Column(
-        children: [
-          buildMain(mcq?.main ?? ""),
-          SizedBox(
-            height: size.height * 0.04,
+      //padding: EdgeInsets.all(10),
+      /* decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [BoxShadow(color: Colors.grey)],
+      ), */
+      child: Neumorphic(
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.flat,
+          lightSource: LightSource.top,
+          depth: 5,
+          surfaceIntensity: 0.8,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+          child: Column(
+            children: [
+              buildMain(mcq?.main ?? ""),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              ...options.map((e) {
+                return buildMCQOption(e.id, e.value);
+              }).toList()
+            ],
           ),
-          ...options.map((e) {
-            return buildMCQOption(e.id, e.value);
-          }).toList()
-        ],
+        ),
       ),
     );
   }
@@ -361,7 +413,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: widget.mode == Mode.PRACTICE
+          /* color: widget.mode == Mode.PRACTICE
             ? submitted
                 ? value == selectedValue
                     ? value == 1
@@ -370,20 +422,39 @@ class _PracticeScreenState extends State<PracticeScreen> {
                     : value == 1
                         ? green
                         : Colors.white
-                : Colors.white
-            : Colors.white,
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: RadioListTile(
-        value: value,
-        groupValue: selectedValue,
-        title: Text(title),
-        onChanged: (_) {
-          setState(() {
-            selectedValue = value;
-          });
-        },
+                : null
+            : null, */
+          //border: Border.all(),
+          //borderRadius: BorderRadius.circular(5),
+          ),
+      child: Neumorphic(
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.flat,
+          lightSource: LightSource.top,
+          depth: 5,
+          surfaceIntensity: 1,
+          color: widget.mode == Mode.PRACTICE
+              ? submitted
+                  ? value == selectedValue
+                      ? value == 1
+                          ? green
+                          : red
+                      : value == 1
+                          ? green
+                          : null
+                  : null
+              : null,
+        ),
+        child: RadioListTile(
+          value: value,
+          groupValue: selectedValue,
+          title: Text(title),
+          onChanged: (_) {
+            setState(() {
+              selectedValue = value;
+            });
+          },
+        ),
       ),
     );
   }

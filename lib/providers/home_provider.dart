@@ -45,15 +45,8 @@ class HomeProvider extends ChangeNotifier {
 
   List<QuestionProvider> getQuestions(int count, bool random) {
     List<QuestionProvider> list = [..._questions];
-    if (count == -1) {
-      if (random) {
-        list.shuffle();
-      }
-    } else {
-      list = list.take(count).toList();
-      if (random) list.shuffle();
-    }
-
+    if (random) list.shuffle();
+    if (count != -1) list = list.take(count).toList();
     return list;
   }
 }

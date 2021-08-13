@@ -31,6 +31,7 @@ dependencies:
   google_fonts: any
   just_audio: ^0.9.5
   syncfusion_flutter_gauges: ^19.2.51
+  flutter_neumorphic: ^3.0.3
 
 dev_dependencies:
   flutter_test:

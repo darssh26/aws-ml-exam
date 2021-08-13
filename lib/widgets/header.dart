@@ -1,6 +1,7 @@
 import 'package:awsmlexam/main.dart';
 import 'package:awsmlexam/widgets/timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class MyHeader extends StatelessWidget {
   final int index, total, score;
@@ -14,20 +15,25 @@ class MyHeader extends StatelessWidget {
       width: double.infinity,
       height: 30,
       margin: EdgeInsets.all(8),
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      //padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(5),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Question ${index + 1}/$total",
-            style: TextStyle(fontWeight: FontWeight.w500),
+      child: Neumorphic(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Question ${index + 1}/$total",
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              buildRightWidget()
+            ],
           ),
-          buildRightWidget()
-        ],
+        ),
       ),
     );
   }
