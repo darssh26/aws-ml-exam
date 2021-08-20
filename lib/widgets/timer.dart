@@ -142,11 +142,6 @@ class _TimerWidgetState extends State<TimerWidget> {
               ),
             ),
           ),
-          /* Icon(
-            Icons.timer,
-            color: Colors.white,
-            size: size.width * 0.05,
-          ) */
         ],
       ),
     );

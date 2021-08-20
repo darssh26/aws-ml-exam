@@ -54,29 +54,6 @@
     },
     {
       "type": "mcq",
-      "main": "A financial services company is building a robust serverless data lake on Amazon S3. The data lake should be flexible and meet the following requirements: Support querying old and new data on Amazon S3 through Amazon Athena and Amazon Redshift Spectrum. Support event-driven ETL pipelines. Provide a quick and easy way to understand metadata. Which approach meets these requirements?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Use an AWS Glue crawler to crawl S3 data, an AWS Lambda function to trigger an AWS Glue ETL job, and an AWS Glue Data catalog to search and discover metadata."
-        },
-        {
-          "id": 2,
-          "value": "Use an AWS Glue crawler to crawl S3 data, an Amazon CloudWatch alarm to trigger an AWS Glue ETL job, and an external Apache Hive metastore to search and discover metadata."
-        },
-        {
-          "id": 3,
-          "value": "Use an AWS Glue crawler to crawl S3 data, an AWS Lambda function to trigger an AWS Batch job, and an external Apache Hive metastore to search and discover metadata."
-        },
-        {
-          "id": 4,
-          "value": "Use an AWS Glue crawler to crawl S3 data, an Amazon CloudWatch alarm to trigger an AWS Batch job, and an AWS Glue Data Catalog to search and discover metadata."
-        }
-      ]
-    },
-    {
-      "type": "mcq",
       "main": "A Machine Learning Specialist is assigned a TensorFlow project using Amazon SageMaker for training, and needs to continue working for an extended period with no Wi-Fi access.   Which approach should the Specialist use to continue working?",
       "comment": "",
       "options": [
@@ -648,6 +625,29 @@
     },
     {
       "type": "mcq",
+      "main": "Given the following confusion matrix for a movie classification model, what is the true class frequency for Romance and the predicted class frequency for Adventure?---25.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "The true class frequency for Romance is 57.92% and the predicted class frequency for Adventure is 13.12%"
+        },
+        {
+          "id": 2,
+          "value": "The true class frequency for Romance is 77.56% and the predicted class frequency for Adventure is 20.85%"
+        },
+        {
+          "id": 3,
+          "value": "The true class frequency for Romance is 0.78 and the predicted class frequency for Adventure is (0.47-0.32)"
+        },
+        {
+          "id": 4,
+          "value": "The true class frequency for Romance is 77.56% * 0.78 and the predicted class frequency for Adventure is 20.85% * 0.32"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
       "main": "An online news organization wants to expand its reach globally by translating some of its most commonly read articles into different languages using ML. The organization's data science team is gathering all the news articles that they have published in both English and at least one other language. They want to use this data to create one machine learning model for each non-English language that the organization is targeting. The models should only require minimum management. What approach should the team use to building these models?",
       "comment": "(the only choice with minimum management Object2Vec for embedding and Seq2Seq for ML translation )",
       "options": [
@@ -661,18 +661,15 @@
         },
         {
           "id": 3,
-          "value": "Use Amazon SageMaker Object2Vec to create a vector. Then use a Long Short-term Memory (LSTM) model using Building Your Own Containers (BYOC) (BYOC requires more management of the model training process, because you have to maintain containers and code."
+          "value": "Use Amazon SageMaker Object2Vec to create a vector. Then use a Long Short-term Memory (LSTM) model using Building Your Own Containers (BYOC)"
         },
         {
           "id": 4,
-          "value": "Use Amazon SageMaker Object2Vec to create a vector. Use Amazon EC2 instances with the Deep"
-        },
-        {
-          "id": 5,
-          "value": "Learning Amazon Machine Image (AMI) to create a language encoder-decoder model"
+          "value": "Use Amazon SageMaker Object2Vec to create a vector. Use Amazon EC2 instances with the Deep Learning Amazon Machine Image (AMI) to create a language encoder-decoder model"
         }
       ]
     },
+
     {
       "type": "mcq",
       "main": "You wish to use a SageMaker notebook within a VPC. SageMaker notebook instances are Internet-enabled, creating a potential security hole in your VPC.   How would you use SageMaker within a VPC without opening up Internet access?",
@@ -721,6 +718,29 @@
     },
     {
       "type": "mcq",
+      "main": "While reviewing the histogram for residuals on regression evaluation data a Machine Learning Specialist notices that the residuals do not form a zero-centered bell shape as shown.---30.png---What does this mean?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "The dataset cannot be accurately represented using the regression model."
+        },
+        {
+          "id": 2,
+          "value": "There are too many variables in the model."
+        },
+        {
+          "id": 3,
+          "value": "The model might have prediction errors over a range of target values."
+        },
+        {
+          "id": 4,
+          "value": "The model is predicting its target values perfectly."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
       "main": "A Data Scientist wants to use the Amazon SageMaker hyperparameter tuning job to automatically tune a random forest model. What API does the Amazon SageMaker SDK use to create and interact with the Amazon SageMaker hyperparameter tuning jobs?",
       "comment": "",
       "options": [
@@ -738,7 +758,7 @@
         },
         {
           "id": 4,
-          "value": "YperparameterTunerJob()"
+          "value": "HyperparameterTunerJob()"
         }
       ]
     },
@@ -896,6 +916,29 @@
     },
     {
       "type": "mcq",
+      "main": "A Machine Learning Specialist prepared the following graph displaying the results of k-means for k = [1:10] Considering the graph, what is a reasonable selection for the optimal choice of k?---38.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "4"
+        },
+        {
+          "id": 2,
+          "value": "10"
+        },
+        {
+          "id": 3,
+          "value": "1"
+        },
+        {
+          "id": 4,
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
       "main": "A Machine Learning Engineer wants to use Amazon SageMaker and the built-in XGBoost algorithm for model training. The training data is currently stored in CSV format, with the first 10 columns representing features and the 11th column representing the target label. What should the ML Engineer do to prepare the data for use in an Amazon SageMaker training job?",
       "comment": "",
       "options": [
@@ -919,7 +962,7 @@
     },
     {
       "type": "mcq",
-      "main": "A company has raw user and transaction data stored in AmazonS3 a MySQL database, and Amazon RedShift. A Data Scientist needs to perform an analysis by joining the three datasets from Amazon S3, MySQL, and Amazon RedShift, and then calculating the average-of a few selected columns from the joined data.   Which AWS service should the Data Scientist use?",
+      "main": "A company has raw user and transaction data stored in AmazonS3, MySQL database, and Amazon RedShift. A Data Scientist needs to perform an analysis by joining the three datasets from Amazon S3, MySQL, and Amazon RedShift, and then calculating the average-of a few selected columns from the joined data.   Which AWS service should the Data Scientist use?",
       "comment": "",
       "options": [
         {
@@ -941,8 +984,31 @@
       ]
     },
     {
+      "type": "mcq",
+      "main": "A Machine Learning Specialist is working with a media company to perform classification on popular articles from the company's website. The company is using random forests to classify how popular an article will be before it is published A sample of the data being used is below.   Given the dataset, the Specialist wants to convert the Day-Of_Week column to binary values.   What technique should be used to convert this column to binary values?---41.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "One-hot encoding"
+        },
+        {
+          "id": 2,
+          "value": "Normalization transformation"
+        },
+        {
+          "id": 3,
+          "value": "Binarization"
+        },
+        {
+          "id": 4,
+          "value": "Tokenization"
+        }
+      ]
+    },
+    {
       "type": "multi",
-      "main": "An Amazon SageMaker notebook instance is launched into Amazon VPC The SageMaker notebook references data contained in an Amazon S3 bucket in another account. The bucket is encrypted using SSE-KMS The instance returns an access denied error when trying to access data in Amazon S3.   Which of the following are required to access the bucket and avoid the access denied error? (Select THREE)",
+      "main": "An Amazon SageMaker notebook instance is launched into Amazon VPC. The SageMaker notebook references data contained in an Amazon S3 bucket in another account. The bucket is encrypted using SSE-KMS The instance returns an access denied error when trying to access data in Amazon S3.   Which of the following are required to access the bucket and avoid the access denied error? (Select THREE)",
       "comment": "",
       "select": [1, 2, 3],
       "options": [
@@ -1020,7 +1086,7 @@
     },
     {
       "type": "mcq",
-      "main": ". A web-based company wants to improve its conversion rate on its landing page Using a large historical dataset of customer visits, the company has repeatedly trained a multi-class deep learning network algorithm on Amazon SageMaker. However, there is an over fitting problem training data shows 90% accuracy in predictions, while test data shows 70% accuracy only.   The company needs to boost the generalization of its model before deploying it into production to maximize conversions of visits to purchases. Which action is recommended to provide the HIGHEST accuracy model for the company's test and validation data?",
+      "main": "A web-based company wants to improve its conversion rate on its landing page Using a large historical dataset of customer visits, the company has repeatedly trained a multi-class deep learning network algorithm on Amazon SageMaker. However, there is an over fitting problem training data shows 90% accuracy in predictions, while test data shows 70% accuracy only.   The company needs to boost the generalization of its model before deploying it into production to maximize conversions of visits to purchases. Which action is recommended to provide the HIGHEST accuracy model for the company's test and validation data?",
       "comment": "",
       "options": [
         {
@@ -1232,12 +1298,12 @@
     },
     {
       "type": "mcq",
-      "main": "A Machine Learning Specialist is developing recommendation engine for a photography blog Given a picture, the recommendation engine should show a picture that captures similar objects The Specialist would like to create a numerical representation feature to perform nearest-neighbor searches. What actions would allow the Specialist to get relevant numerical representations?",
+      "main": "A Machine Learning Specialist is developing recommendation engine for a photography blog Given a picture, the recommendation engine should show a picture that captures similar objects. The Specialist would like to create a numerical representation feature to perform nearest-neighbor searches. What actions would allow the Specialist to get relevant numerical representations?",
       "comment": "",
       "options": [
         {
           "id": 1,
-          "value": "Run images through a neural network pie-trained on ImageNet, and collect the feature vectors from the penultimate layer."
+          "value": "Run images through a neural network pre-trained on ImageNet, and collect the feature vectors from the penultimate layer."
         },
         {
           "id": 2,
@@ -1421,7 +1487,7 @@
     },
     {
       "type": "mcq",
-      "main": "A company's Machine Learning Specialist needs to improve the training speed of a time-series forecasting model using TensorFlow. The training is currently implemented on a single-GPU machine and takes approximately 23 hours to complete. The training needs to be run daily.   The model accuracy js acceptable, but the company anticipates a continuous increase in the size of the training data and a need to update the model on an hourly, rather than a daily, basis. The company also wants to minimize coding effort and infrastructure changes.   What should the Machine Learning Specialist do to the training solution to allow it to scale for future demand?",
+      "main": "A company's Machine Learning Specialist needs to improve the training speed of a time-series forecasting model using TensorFlow. The training is currently implemented on a single-GPU machine and takes approximately 23 hours to complete. The training needs to be run daily.   The model accuracy is acceptable, but the company anticipates a continuous increase in the size of the training data and a need to update the model on an hourly, rather than a daily, basis. The company also wants to minimize coding effort and infrastructure changes.   What should the Machine Learning Specialist do to the training solution to allow it to scale for future demand?",
       "comment": "",
       "options": [
         {
@@ -1472,7 +1538,7 @@
     },
     {
       "type": "mcq",
-      "main": "A Machine Learning Specialist needs to create a data repository to hold a large amount of time-based training data for a new model. In the source system, new files are added every hour Throughout a single 24-hour period, the volume of hourly updates will change significantly. The Specialist always wants to train on the last 24 hours of the data. Which type of data repository is the MOST cost-effective solution?",
+      "main": "A Machine Learning Specialist needs to create a data repository to hold a large amount of time-based training data for a new model. In the source system, new files are added every hour. Throughout a single 24-hour period, the volume of hourly updates will change significantly. The Specialist always wants to train on the last 24 hours of the data. Which type of data repository is the MOST cost-effective solution?",
       "comment": "",
       "options": [
         {
@@ -1518,7 +1584,7 @@
     },
     {
       "type": "mcq",
-      "main": ". A Machine Learning Specialist is working for a credit card processing company and receives an unbalanced dataset containing credit card transactions. It contains 99,000 valid transactions and 1,000 fraudulent transactions. The Specialist is asked to score a model that was run against the dataset. The Specialist has been advised that identifying valid transactions is equally as important as identifying fraudulent transactions.   What metric is BEST suited to score the model?",
+      "main": "A Machine Learning Specialist is working for a credit card processing company and receives an unbalanced dataset containing credit card transactions. It contains 99,000 valid transactions and 1,000 fraudulent transactions. The Specialist is asked to score a model that was run against the dataset. The Specialist has been advised that identifying valid transactions is equally as important as identifying fraudulent transactions.   What metric is BEST suited to score the model?",
       "comment": "",
       "options": [
         {
@@ -1541,7 +1607,7 @@
     },
     {
       "type": "mcq",
-      "main": ". A financial organization uses multiple ML models to detect irregular patterns in its data to combat fraudulent activity such as money laundering. They use a TensorFlow-based Docker container on GPU-enabled Amazon EC2 instances to concurrently train the multiple models for this workload. However, they want to automate the batch data preprocessing and ML training aspects of this pipeline, scheduling them to take place automatically every 24 hours. What AWS service can they use to do this?",
+      "main": "A financial organization uses multiple ML models to detect irregular patterns in its data to combat fraudulent activity such as money laundering. They use a TensorFlow-based Docker container on GPU-enabled Amazon EC2 instances to concurrently train the multiple models for this workload. However, they want to automate the batch data preprocessing and ML training aspects of this pipeline, scheduling them to take place automatically every 24 hours. What AWS service can they use to do this?",
       "comment": "",
       "options": [
         {
@@ -1587,7 +1653,7 @@
     },
     {
       "type": "mcq",
-      "main": ". A company is using Amazon Polly to translate plaintext documents to speech for automated company announcements However company acronyms are being mispronounced in the current documents. How should a Machine Learning Specialist address this issue for future documents?",
+      "main": "A company is using Amazon Polly to translate plaintext documents to speech for automated company announcements However company acronyms are being mispronounced in the current documents. How should a Machine Learning Specialist address this issue for future documents?",
       "comment": "",
       "options": [
         {
@@ -1661,7 +1727,7 @@
     },
     {
       "type": "mcq",
-      "main": ". A Data Scientist needs to create a serverless ingestion and analytics solution for high-velocity, real-time streaming data.   The ingestion process must buffer and convert incoming records from JSON to a query-optimized, columnar format without data loss. The output datastore must be highly available, and Analysts must be able to run SQL queries against the data and connect to existing business intelligence dashboards.   Which solution should the Data Scientist build to satisfy the requirements?",
+      "main": "A Data Scientist needs to create a serverless ingestion and analytics solution for high-velocity, real-time streaming data.   The ingestion process must buffer and convert incoming records from JSON to a query-optimized, columnar format without data loss. The output datastore must be highly available, and Analysts must be able to run SQL queries against the data and connect to existing business intelligence dashboards.   Which solution should the Data Scientist build to satisfy the requirements?",
       "comment": "",
       "options": [
         {
@@ -1684,30 +1750,7 @@
     },
     {
       "type": "mcq",
-      "main": "An advertising and analytics company uses machine learning to predict user response to online advertisements using a custom XGBoost model. The company wants to improve its ML pipeline by porting its training and inference code, written in R, to Amazon SageMaker, and do so with minimal changes to the existing code. How should the company set up this new pipeline?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Use the Build Your Own Container (BYOC) Amazon SageMaker option. Create a new Docker container with the existing code. Register the container in Amazon Elastic Container Registry (ECR). Finally, run the training and inference jobs using this container."
-        },
-        {
-          "id": 2,
-          "value": "Use Amazon in-built algorithms to run their training and inference jobs."
-        },
-        {
-          "id": 3,
-          "value": "Use the Amazon pre-built R container option and port the existing code over to the container. Register the container in Amazon Elastic Container Registry (Amazon ECR). Finally, run the training and inference jobs using this container."
-        },
-        {
-          "id": 4,
-          "value": "Create a new Amazon SageMaker notebook instance. Copy the existing code into an Amazon SageMaker notebook. Then, run the pipeline from this notebook."
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": ". A city wants to monitor its air quality to address the consequences of air pollution. A Machine Learning Specialist needs to forecast the air quality in parts per million of contaminates for the next 2 days in the city. As this is a prototype, only daily data from the last year is available.   Which model is MOST likely to provide the best results in Amazon SageMaker?",
+      "main": "A city wants to monitor its air quality to address the consequences of air pollution. A Machine Learning Specialist needs to forecast the air quality in parts per million of contaminates for the next 2 days in the city. As this is a prototype, only daily data from the last year is available.   Which model is MOST likely to provide the best results in Amazon SageMaker?",
       "comment": "",
       "options": [
         {
@@ -1797,6 +1840,7 @@
         }
       ]
     },
+
     {
       "type": "mcq",
       "main": "A Machine Learning Specialist trained a regression model, but the first iteration needs optimizing. The Specialist needs to understand whether the model is more frequently overestimating or underestimating the target.   What option can the Specialist use to determine whether it is overestimating or underestimating the target value?",
@@ -1890,32 +1934,8 @@
       ]
     },
     {
-      "type": "multi",
-      "main": "A Machine Learning Engineer created a pipeline for training an ML model using an Amazon SageMaker training job. The training job began successfully but then failed after running for five minutes. How should the Engineer begin to debug this issue? (Select TWO.)",
-      "comment": "",
-      "select": [1, 2],
-      "options": [
-        {
-          "id": 1,
-          "value": "Call the DescribeJob API to check the FailureReason option"
-        },
-        {
-          "id": 2,
-          "value": "Go to Amazon CloudWatch logs and check the logs for the given training job"
-        },
-        {
-          "id": 3,
-          "value": "Check AWS CloudTrail logs to check the error that caused the training to fail"
-        },
-        {
-          "id": 4,
-          "value": "Log into the Amazon SageMaker training job instance and check the job history"
-        }
-      ]
-    },
-    {
       "type": "mcq",
-      "main": "A Machine Learning Specialist deployed a model that provides product recommendations on a company's website Initially, the model was performing very well and resulted in customers buying more products on average However within the past few months the Specialist has noticed that the effect of product recommendations has diminished and customers are starting to return to their original habits of spending less The Specialist is unsure of what happened, as the model has not changed from its initial deployment over a year ago.  Which method should the Specialist try to improve model performance?",
+      "main": "A Machine Learning Specialist deployed a model that provides product recommendations on a company's website. Initially, the model was performing very well and resulted in customers buying more products on average However within the past few months the Specialist has noticed that the effect of product recommendations has diminished and customers are starting to return to their original habits of spending less The Specialist is unsure of what happened, as the model has not changed from its initial deployment over a year ago.  Which method should the Specialist try to improve model performance?",
       "comment": "",
       "options": [
         {
@@ -1938,7 +1958,7 @@
     },
     {
       "type": "mcq",
-      "main": "A Machine Learning Specialist was given a dataset consisting of unlabeled data The Specialist must create a model that can help the team classify the data into different buckets What model should be used to complete this work?",
+      "main": "A Machine Learning Specialist was given a dataset consisting of unlabeled data The Specialist must create a model that can help the team classify the data into different buckets. What model should be used to complete this work?",
       "comment": "",
       "options": [
         {
@@ -2196,7 +2216,7 @@
     },
     {
       "type": "mcq",
-      "main": "A Marketing Manager at a pet insurance company plans to launch a targeted marketing campaign on social media to acquire new customers. Currently, the company has the following data in Amazon Aurora. Profiles for all past and existing customers Profiles for all past and existing insured pets Policy-level information Premiums received Claims paid What steps should be taken to implement a machine learning model to identify potential new customers on social media?",
+      "main": "A Marketing Manager at a pet insurance company plans to launch a targeted marketing campaign on social media to acquire new customers. Currently, the company has the following data in Amazon Aurora. Profiles for all past and existing customers, profiles for all past and existing insured pets, policy-level information, premiums received and claims paid. What steps should be taken to implement a machine learning model to identify potential new customers on social media?",
       "comment": "",
       "options": [
         {
@@ -2219,7 +2239,7 @@
     },
     {
       "type": "mcq",
-      "main": "A Machine Learning Specialist must build out a process to query a dataset on Amazon S3 using Amazon Athena. The dataset contains more than 800.000 records stored as plaintext CSV files. Each record contains 200 columns and is approximately 1 5 MB in size. Most queries will span 5 to 10 columns only   How should the Machine Learning Specialist transform the dataset to minimize query runtime?",
+      "main": "A Machine Learning Specialist must build out a process to query a dataset on Amazon S3 using Amazon Athena. The dataset contains more than 800.000 records stored as plaintext CSV files. Each record contains 200 columns and is approximately 15 MB in size. Most queries will span 5 to 10 columns only   How should the Machine Learning Specialist transform the dataset to minimize query runtime?",
       "comment": "",
       "options": [
         {
@@ -2242,7 +2262,7 @@
     },
     {
       "type": "mcq",
-      "main": "A manufacturer of car engines collects data from cars as they are being driven. The data collected includes timestamp, engine temperature, rotations per minute (RPM), and other sensor readings. The company wants to predict when an engine is going to have a problem so it can notify drivers in advance to get engine so it can notify drivers in advance to get engine maintenance. The engine data is loaded into a data lake for training.   Which is the MOST suitable predictive model that can be deployed into production?",
+      "main": "A manufacturer of car engines collects data from cars as they are being driven. The data collected includes timestamp, engine temperature, rotations per minute (RPM), and other sensor readings. The company wants to predict when an engine is going to have a problem so it can notify drivers in advance to get engine maintenance. The engine data is loaded into a data lake for training.   Which is the MOST suitable predictive model that can be deployed into production?",
       "comment": "",
       "options": [
         {
@@ -2310,52 +2330,6 @@
       ]
     },
     {
-      "type": "mcq",
-      "main": "A Machine Learning Specialist is building a model that will perform time series forecasting using Amazon SageMaker. The Specialist has finished training the model and is now planning to perform load testing on the endpoint so they can configure Auto Scaling for the model variant.   Which approach will allow the Specialist to review the latency, memory utilization, and CPU utilization during the load test?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Generate an Amazon CloudWatch dashboard to create a single view for the latency, memory utilization, and CPU utilization metrics that are outputted by Amazon SageMaker."
-        },
-        {
-          "id": 2,
-          "value": "Build custom Amazon CloudWatch Logs and then leverage Amazon ES and Kibana to query and visualize the data as it is generated by Amazon SageMaker."
-        },
-        {
-          "id": 3,
-          "value": "Send Amazon CloudWatch Logs that were generated by Amazon SageMaker lo Amazon ES and use Kibana to query and visualize the log data."
-        },
-        {
-          "id": 4,
-          "value": "Review SageMaker logs that have been written to Amazon S3 by leveraging Amazon Athena and Amazon OuickSight to visualize logs as they are being produced."
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "A security and networking company wants to use ML to flag certain IP addresses that have been known to send spam and phishing information. The company wants to build an ML model based on previous user feedback indicating whether specific IP addresses have been connected to a website designed for spam and phishing. What is the simplest solution that the company can implement?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "A rule-based solution should be used instead of ML"
-        },
-        {
-          "id": 2,
-          "value": "Regression"
-        },
-        {
-          "id": 3,
-          "value": "Natural language processing (NLP)"
-        },
-        {
-          "id": 4,
-          "value": "Classification"
-        }
-      ]
-    },
-    {
       "type": "multi",
       "main": "A Machine Learning Engineer is creating and preparing data for a linear regression model. However, while preparing the data, the Engineer notices that about 20% of the numerical data contains missing values in the same two columns. The shape of the data is 500 rows by 4 columns, including the target column. How could the Engineer handle the missing values in the data? (Select TWO.)",
       "comment": "",
@@ -2380,29 +2354,6 @@
         {
           "id": 5,
           "value": "Remove the rows containing the missing values"
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "A team of Data Scientists wants to use Amazon SageMaker training jobs to run two different versions of the same model in parallel to compare the long-term effectiveness of the different versions in reaching the related business outcome. How should the team deploy these two model versions with minimum management?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Create an endpoint configuration with production variants for the two models with equal weights."
-        },
-        {
-          "id": 2,
-          "value": "Create an endpoint configuration with production variants for the two models with a weight ratio of 90:10."
-        },
-        {
-          "id": 3,
-          "value": "Create a Lambda function that downloads the models from Amazon S3 and calculates and returns the predictions of the two models."
-        },
-        {
-          "id": 4,
-          "value": "Create a Lambda function that preprocesses the incoming data, calls the two Amazon SageMaker"
         }
       ]
     },
@@ -2581,29 +2532,7 @@
         }
       ]
     },
-    {
-      "type": "mcq",
-      "main": "A Machine Learning Specialist receives customer data for an online shopping website. The data includes demographics, past visits, and locality information. The Specialist must develop a machine learning approach to identify the customer shopping patterns, preferences and trends to enhance the website for better service and smart recommendations.   Which solution should the Specialist recommend?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Collaborative filtering based on user interactions and correlations to identify patterns in the customer database"
-        },
-        {
-          "id": 2,
-          "value": "Random Cut Forest (RCF) over random subsamples to identify patterns in the customer database"
-        },
-        {
-          "id": 3,
-          "value": "Latent Dirichlet Allocation (LDA) for the given collection of discrete data to identify patterns in the customer database."
-        },
-        {
-          "id": 4,
-          "value": "A neural network with a minimum of three layers and random initial weights to identify patterns in the customer database"
-        }
-      ]
-    },
+
     {
       "type": "multi",
       "main": "A company is using its genomic data to classify how different human DNA affects cell growth, so that they can predict a person's chances of getting cancer. Before creating and preparing the training and validation datasets for the model, the company wants to reduce the high dimensionality of the data. What technique should the company use to achieve this goal? (Select TWO.)",
@@ -2662,29 +2591,25 @@
       "options": [
         {
           "id": 1,
-          "value": "Copy the summary text fields and use them to fill in the missing full review text fields, and then run"
+          "value": "Copy the summary text fields and use them to fill in the missing full review text fields, and then run through the test set."
         },
         {
           "id": 2,
-          "value": "through the test set."
-        },
-        {
-          "id": 3,
           "value": "Use an algorithm that handles missing data better than decision trees."
         },
         {
-          "id": 4,
+          "id": 3,
           "value": "Drop the test samples with missing full review text fields, and then run through the test set."
         },
         {
-          "id": 5,
+          "id": 4,
           "value": "Generate synthetic data to fill in the fields that are missing data, and then run through the test set."
         }
       ]
     },
     {
       "type": "mcq",
-      "main": "A manufacturing company has a large set of labeled historical sales data The manufacturer would like to predict how many units of a particular part should be produced each quarter.   Which machine learning approach should be used to solve this problem?",
+      "main": "A manufacturing company has a large set of labeled historical sales data. The manufacturer would like to predict how many units of a particular part should be produced each quarter.   Which machine learning approach should be used to solve this problem?",
       "comment": "",
       "options": [
         {
@@ -2702,29 +2627,6 @@
         {
           "id": 4,
           "value": "Random Cut Forest (RCF)"
-        }
-      ]
-    },
-    {
-      "type": "mcq",
-      "main": "A Machine Learning Specialist is assigned a TensorFlow project using Amazon SageMaker for training, and needs to continue working for an extended period with no Wi-Fi access.   Which approach should the Specialist use to continue working?",
-      "comment": "",
-      "options": [
-        {
-          "id": 1,
-          "value": "Download the TensorFlow Docker container used in Amazon SageMaker from GitHub to their local environment, and use the Amazon SageMaker Python SDK to test the code."
-        },
-        {
-          "id": 2,
-          "value": "Download TensorFlow from tensorflow.org to emulate the TensorFlow kernel in the SageMaker environment."
-        },
-        {
-          "id": 3,
-          "value": "Download the SageMaker notebook to their local environment then install Jupyter Notebooks on their laptop and continue the development in a local notebook."
-        },
-        {
-          "id": 4,
-          "value": "Install Python 3 and boto3 on their laptop and continue the code development using that environment"
         }
       ]
     },
@@ -2816,13 +2718,13 @@
         },
         {
           "id": 4,
-          "value": "Add “EnableKMS” to the Amazon SageMaker training job. Then, specify the Amazon S3 bucket thatincludes the data."
+          "value": "Add “EnableKMS” to the Amazon SageMaker training job. Then, specify the Amazon S3 bucket that includes the data."
         }
       ]
     },
     {
       "type": "mcq",
-      "main": "An online reseller has a large, multi-column dataset with one column missing 30% of its data A Machine Learning Specialist believes that certain columns in the dataset could be used to reconstruct the missing data. Which reconstruction approach should the Specialist use to preserve the integrity of the dataset?",
+      "main": "An online reseller has a large, multi-column dataset with one column missing 30% of its data. A Machine Learning Specialist believes that certain columns in the dataset could be used to reconstruct the missing data. Which reconstruction approach should the Specialist use to preserve the integrity of the dataset?",
       "comment": "",
       "options": [
         {
@@ -2891,7 +2793,7 @@
     },
     {
       "type": "mcq",
-      "main": "he Chief Editor for a product catalog wants the Research and Development team to build a machine learning system that can be used to detect whether or not individuals in a collection of images are wearing the company's retail brand. The team has a set of training data.   Which machine learning algorithm should the researchers use that BEST meets their requirements?",
+      "main": "The Chief Editor for a product catalog wants the Research and Development team to build a machine learning system that can be used to detect whether or not individuals in a collection of images are wearing the company's retail brand. The team has a set of training data.   Which machine learning algorithm should the researchers use that BEST meets their requirements?",
       "comment": "",
       "options": [
         {
@@ -2914,7 +2816,7 @@
     },
     {
       "type": "mcq",
-      "main": ". You work for a web retailer where you need to analyze data produced for your company by an outside market data provider. You need to produce recommendations based on patterns in user preferences by demographic found in the supplied data. You have stored the data in one of your company's S3 buckets. You have created a Glue crawler that you have configured to crawl the data on S3 and you have written a custom classifier. Unfortunately, the crawler failed to create a schema.   Why might the Glue crawler have failed in this way?",
+      "main": "You work for a web retailer where you need to analyze data produced for your company by an outside market data provider. You need to produce recommendations based on patterns in user preferences by demographic found in the supplied data. You have stored the data in one of your company's S3 buckets. You have created a Glue crawler that you have configured to crawl the data on S3 and you have written a custom classifier. Unfortunately, the crawler failed to create a schema.   Why might the Glue crawler have failed in this way?",
       "comment": "",
       "options": [
         {
@@ -3029,7 +2931,7 @@
     },
     {
       "type": "multi",
-      "main": "A Data Scientist wants to tune the hyperparameters of a machine learning model to improve the model's F1score. What technique can be used to achieve this desired outcome on Amazon SageMaker? (Select TWO)",
+      "main": "A Data Scientist wants to tune the hyperparameters of a machine learning model to improve the model's F1 score. What technique can be used to achieve this desired outcome on Amazon SageMaker? (Select TWO)",
       "comment": "",
       "select": [1, 2],
       "options": [
@@ -3057,7 +2959,7 @@
     },
     {
       "type": "mcq",
-      "main": ". A Data Scientist is working on an application that performs sentiment analysis. The validation accuracy is poor and the Data Scientist thinks that the cause may be a rich vocabulary and a low average frequency of words in the dataset.   Which tool should be used to improve the validation accuracy?",
+      "main": "A Data Scientist is working on an application that performs sentiment analysis. The validation accuracy is poor and the Data Scientist thinks that the cause may be a rich vocabulary and a low average frequency of words in the dataset.   Which tool should be used to improve the validation accuracy?",
       "comment": "",
       "options": [
         {
@@ -3075,6 +2977,29 @@
         {
           "id": 4,
           "value": "Amazon SageMaker BlazingText allow mode"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A large mobile network operating company is building a machine learning model to predict customers who are likely to unsubscribe from the service. The company plans to offer an incentive for these customers as the cost of churn is far greater than the cost of the incentive.   The model produces the following confusion matrix after evaluating on a test dataset of 100 customers: Based on the model evaluation results, why is this viable model for production?---139.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "The model is 86% accurate and the cost incurred by the company as a result of false positives is less than the false negatives."
+        },
+        {
+          "id": 2,
+          "value": "The model is 86% accurate and the cost incurred by the company as a result of false negatives is less than the false positives."
+        },
+        {
+          "id": 3,
+          "value": "The precision of the model is 86%, which is less than the accuracy of the model."
+        },
+        {
+          "id": 4,
+          "value": "The precision of the model is 86%, which is greater than the accuracy of the model."
         }
       ]
     },
@@ -3135,7 +3060,7 @@
         },
         {
           "id": 2,
-          "value": "A scatter plot with points colored by target variable that uses (-Distributed Stochastic Neighbor Embedding (I-SNE) to visualize the large number of input variables in an easier-to-read dimension."
+          "value": "A scatter plot with points colored by target variable that uses t-Distributed Stochastic Neighbor Embedding (t-SNE) to visualize the large number of input variables in an easier-to-read dimension."
         },
         {
           "id": 3,
@@ -3172,34 +3097,6 @@
         {
           "id": 5,
           "value": "Create a support case with the SageMaker team to change the default image classification algorithm to Inception."
-        }
-      ]
-    },
-    {
-      "type": "multi",
-      "main": "An insurance company is developing a new device for vehicles that uses a camera to observe drivers' behavior and alert them when they appear distracted. The company created approximately 10,000 training images in a controlled environment that a Machine Learning Specialist will use to train and evaluate machine learning models.   During the model evaluation the Specialist notices that the training error rate diminishes faster as the number of epochs increases and the model is not accurately inferring on the unseen test images.   Which of the following should be used to resolve this issue? (Select TWO)",
-      "comment": "",
-      "select": [1, 2],
-      "options": [
-        {
-          "id": 1,
-          "value": "Perform data augmentation on the training data."
-        },
-        {
-          "id": 2,
-          "value": "Add L2 regularization to the model."
-        },
-        {
-          "id": 3,
-          "value": "Make the neural network architecture complex."
-        },
-        {
-          "id": 4,
-          "value": "Add vanishing gradient to the model"
-        },
-        {
-          "id": 5,
-          "value": "Use gradient checking in the model."
         }
       ]
     },
@@ -3417,6 +3314,29 @@
     },
     {
       "type": "mcq",
+      "main": "The displayed graph is from a forecasting model for testing a time series. Considering the graph only, which conclusion should a Machine Learning Specialist make about the behavior of the model?---155.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "The model predicts both the trend and the seasonality well."
+        },
+        {
+          "id": 2,
+          "value": "The model does not predict the trend or the seasonality well."
+        },
+        {
+          "id": 3,
+          "value": "The model predicts the trend well, but not the seasonality."
+        },
+        {
+          "id": 4,
+          "value": "The model predicts the seasonality well, but not the trend."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
       "main": "A retail chain has been ingesting purchasing records from its network of 20,000 stores to Amazon S3 using Amazon Kinesis Data Firehose To support training an improved machine learning model, training records will require new but simple transformations, and some attributes will be combined. The model needs to be retrained daily. Given the large number of stores and the legacy data ingestion, which change will require the LEAST amount of development effort?",
       "comment": "",
       "options": [
@@ -3568,7 +3488,7 @@
         },
         {
           "id": 3,
-          "value": "Implement an AWS Lambda function to long Amazon SageMaker API calls to Amazon S3. Add code to push a custom metric to Amazon CloudWatch. Create an alarm in CloudWatch with Amazon SNS to receive a notification when the model is overfitting."
+          "value": "Implement an AWS Lambda function to log Amazon SageMaker API calls to Amazon S3. Add code to push a custom metric to Amazon CloudWatch. Create an alarm in CloudWatch with Amazon SNS to receive a notification when the model is overfitting."
         },
         {
           "id": 4,
@@ -4047,6 +3967,246 @@
         {
           "id": 4,
           "value": "Bundle the NVIDIA drivers with the Docker image."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A large consumer goods manufacturer has the following products on sale: \n34 different toothpaste variants \n48 different toothbrush variants \n43 different mouthwash variants \nThe entire sales history of all these products is available in Amazon S3. Currently, the company is using custom-built autoregressive integrated moving average (ARIMA) models to forecast demand for these products. The company wants to predict the demand for a new product that will soon be launched. Which solution should a Machine Learning Specialist apply?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Train an Amazon SageMaker DeepAR algorithm to forecast demand for the new product."
+        },
+        {
+          "id": 2,
+          "value": "Train a custom ARIMA model to forecast demand for the new product."
+        },
+        {
+          "id": 3,
+          "value": "Train an Amazon SageMaker k-means clustering algorithm to forecast demand for the new product."
+        },
+        {
+          "id": 4,
+          "value": "Train a custom XGBoost model to forecast demand for the new product."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "An aircraft engine manufacturing company is measuring 200 performance metrics in a time-series. Engineers want to detect critical manufacturing defects in near- real time during testing. All of the data needs to be stored for offline analysis. What approach would be the MOST effective to perform near-real time defect detection?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Use Amazon Kinesis Data Firehose for ingestion and Amazon Kinesis Data Analytics Random Cut Forest (RCF) to perform anomaly detection. Use Kinesis Data Firehose to store data in Amazon S3 for further analysis."
+        },
+        {
+          "id": 2,
+          "value": "Use AWS IoT Analytics for ingestion, storage, and further analysis. Use Jupyter notebooks from within AWS IoT Analytics to carry out analysis for anomalies."
+        },
+        {
+          "id": 3,
+          "value": "Use Amazon S3 for ingestion, storage, and further analysis. Use an Amazon EMR cluster to carry out Apache Spark ML k-means clustering to determine anomalies."
+        },
+        {
+          "id": 4,
+          "value": "Use Amazon S3 for ingestion, storage, and further analysis. Use the Amazon SageMaker Random Cut Forest (RCF) algorithm to determine anomalies."
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "main": "Data Scientist is building a model to predict customer churn using a dataset of 100 continuous numerical features. The Marketing team has not provided any insight about which features are relevant for churn prediction. The Marketing team wants to interpret the model and see the direct impact of relevant features on the model outcome. While training a logistic regression model, the Data Scientist observes that there is a wide gap between the training and validation set accuracy. Which methods can the Data Scientist use to improve the model performance and satisfy the Marketing team's needs? (Choose two.)",
+      "comment": "",
+      "select": [1, 2],
+      "options": [
+        {
+          "id": 1,
+          "value": "Add L1 regularization to the classifier"
+        },
+        {
+          "id": 2,
+          "value": "Perform recursive feature elimination"
+        },
+        {
+          "id": 3,
+          "value": "Add features to the dataset"
+        },
+        {
+          "id": 4,
+          "value": "Perform t-distributed stochastic neighbor embedding (t-SNE)"
+        },
+        {
+          "id": 5,
+          "value": "Perform linear discriminant analysis"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A company uses a long short-term memory (LSTM) model to evaluate the risk factors of a particular energy sector. The model reviews multi-page text documents to analyze each sentence of the text and categorize it as either a potential risk or no risk. The model is not performing well, even though the Data Scientist has experimented with many different network structures and tuned the corresponding hyperparameters. Which approach will provide the MAXIMUM performance boost?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Initialize the words by term frequency-inverse document frequency (TF-IDF) vectors pretrained on a large collection of news articles related to the energy sector."
+        },
+        {
+          "id": 2,
+          "value": "Use gated recurrent units (GRUs) instead of LSTM and run the training process until the validation loss stops decreasing."
+        },
+        {
+          "id": 3,
+          "value": "Reduce the learning rate and run the training process until the training loss stops decreasing."
+        },
+        {
+          "id": 4,
+          "value": "Initialize the words by word2vec embeddings pretrained on a large collection of news articles related to the energy sector."
+        }
+      ]
+    },
+    {
+      "type": "multi",
+      "main": "A Machine Learning team runs its own training algorithm on Amazon SageMaker. The training algorithm requires external assets. The team needs to submit both its own algorithm code and algorithm-specific parameters to Amazon SageMaker. What combination of services should the team use to build a custom algorithm in Amazon SageMaker? (Choose two.)",
+      "comment": "",
+      "select": [1, 2],
+      "options": [
+        {
+          "id": 1,
+          "value": "Amazon ECR"
+        },
+        {
+          "id": 2,
+          "value": "Amazon S3"
+        },
+        {
+          "id": 3,
+          "value": "AWS Secrets Manager"
+        },
+        {
+          "id": 4,
+          "value": "AWS CodeStar"
+        },
+        {
+          "id": 5,
+          "value": "Amazon ECS"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A Machine Learning Specialist previously trained a logistic regression model using scikit-learn on a local machine, and the Specialist now wants to deploy it to production for inference only. What steps should be taken to ensure Amazon SageMaker can host a model that was trained locally?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Build the Docker image with the inference code. Tag the Docker image with the registry hostname and upload it to Amazon ECR."
+        },
+        {
+          "id": 2,
+          "value": "Serialize the trained model so the format is compressed for deployment. Tag the Docker image with the registry hostname and upload it to Amazon S3."
+        },
+        {
+          "id": 3,
+          "value": "Serialize the trained model so the format is compressed for deployment. Build the image and upload it to Docker Hub."
+        },
+        {
+          "id": 4,
+          "value": "Build the Docker image with the inference code. Configure Docker Hub and upload the image to Amazon ECR."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A trucking company is collecting live image data from its fleet of trucks across the globe. The data is growing rapidly and approximately 100 GB of new data is generated every day. The company wants to explore machine learning use cases while ensuring the data is only accessible to specific IAM users. Which storage option provides the most processing flexibility and will allow access control with IAM?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Use an Amazon S3-backed data lake to store the raw images, and set up the permissions using bucket policies."
+        },
+        {
+          "id": 2,
+          "value": "Use a database, such as Amazon DynamoDB, to store the images, and set the IAM policies to restrict access to only the desired IAM users."
+        },
+        {
+          "id": 3,
+          "value": "Setup up Amazon EMR with Hadoop Distributed File System (HDFS) to store the files, and restrict access to the EMR instances using IAM policies."
+        },
+        {
+          "id": 4,
+          "value": "Configure Amazon EFS with IAM policies to make the data available to Amazon EC2 instances owned by the IAM users."
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A credit card company wants to build a credit scoring model to help predict whether a new credit card applicant will default on a credit card payment. The company has collected data from a large number of sources with thousands of raw attributes. Early experiments to train a classification model revealed that many attributes are highly correlated, the large number of features slows down the training speed significantly, and that there are some overfitting issues. The Data Scientist on this project would like to speed up the model training time without losing a lot of information from the original dataset. Which feature engineering technique should the Data Scientist use to meet the objectives?",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Use an autoencoder or principal component analysis (PCA) to replace original features with new features"
+        },
+        {
+          "id": 2,
+          "value": "Normalize all numerical values to be between 0 and 1"
+        },
+        {
+          "id": 3,
+          "value": "Run self-correlation on all features and remove highly correlated features"
+        },
+        {
+          "id": 4,
+          "value": "Cluster raw data using k-means and use sample data from each cluster to build a new dataset"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "A company wants to classify user behavior as either fraudulent or normal. Based on internal research, a Machine Learning Specialist would like to build a binary classifier based on two features: age of account and transaction month. The class distribution for these features is illustrated in the figure provided. Based on this information which model would have the HIGHEST accuracy?---svm.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Support vector machine (SVM) with non-linear kernel"
+        },
+        {
+          "id": 2,
+          "value": "Logistic regression"
+        },
+        {
+          "id": 3,
+          "value": "Long short-term memory (LSTM) model with scaled exponential linear unit (SELL))"
+        },
+        {
+          "id": 4,
+          "value": "Single perceptron with tanh activation function"
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "main": "This graph shows the training and validation loss against the epochs for a neural network. The network being trained is as follows; Two dense layers one output neuron \n100 neurons in each layer \n100 epochs \nRandom initialization of weights Which technique can be used to improve model performance in terms of accuracy in the validation set?---graph.png",
+      "comment": "",
+      "options": [
+        {
+          "id": 1,
+          "value": "Early stopping"
+        },
+        {
+          "id": 2,
+          "value": "Increasing the number of epochs"
+        },
+        {
+          "id": 3,
+          "value": "Adding another layer with the 100 neurons"
+        },
+        {
+          "id": 4,
+          "value": "Random initialization of weights with appropriate seed"
         }
       ]
     }

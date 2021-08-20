@@ -49,4 +49,10 @@ class HomeProvider extends ChangeNotifier {
     if (count != -1) list = list.take(count).toList();
     return list;
   }
+
+  List<QuestionProvider> getQuestionsRange(int start, int end) {
+    List<QuestionProvider> list = [..._questions];
+    list = list.sublist(start - 1, end);
+    return list;
+  }
 }

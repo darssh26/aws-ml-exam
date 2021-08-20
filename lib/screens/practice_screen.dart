@@ -473,12 +473,9 @@ class _PracticeScreenState extends State<PracticeScreen> {
               return WidgetSpan(
                 child: Container(
                   width: size.width,
-                  height: size.height * 0.2,
-                  padding: EdgeInsets.all(5),
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: MediaFinder.getImage(e),
-                  ),
+                  //height: size.height * 0.35,
+                  padding: EdgeInsets.all(8),
+                  child: MediaFinder.getImage(e),
                 ),
               );
             }
