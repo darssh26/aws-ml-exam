@@ -20,8 +20,6 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //List<QuestionProvider> get questions => _questions;
-
   Future getData() async {
     String data = await loadJson("assets/jsons/main.json");
     _getQuestions(data);

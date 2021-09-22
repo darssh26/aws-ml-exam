@@ -1,3 +1,5 @@
+//import 'dart:io';
+
 import 'package:awsmlexam/main.dart';
 import 'package:awsmlexam/models/option.dart';
 import 'package:awsmlexam/providers/mcq_provider.dart';
@@ -11,6 +13,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+//import 'package:screenshot/screenshot.dart';
 
 class PracticeScreen extends StatefulWidget {
   final List<QuestionProvider> questions;
@@ -48,6 +52,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
   List<QuestionProvider> markedQuestions = [];
   late int markedScore;
   late bool isReviewing;
+
+  ScrollController _scrollController = new ScrollController();
+
+  //Create an instance of ScreenshotController
+  //ScreenshotController screenshotController = ScreenshotController();
 
   @override
   void initState() {
@@ -93,6 +102,14 @@ class _PracticeScreenState extends State<PracticeScreen> {
     }
   }
 
+  void scrollToTop() {
+    _scrollController.animateTo(
+      0.0,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
+  }
+
   void goToResultScreen() {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => ResultScreen(total, score)));
@@ -107,6 +124,19 @@ class _PracticeScreenState extends State<PracticeScreen> {
       }
     }
   }
+
+  /* void takeScreenshot() {
+    Directory dir = MediaFinder.dir;
+    String fileName =
+        "awsml" + DateTime.now().microsecondsSinceEpoch.toString();
+    String path = dir.path;
+
+    print(path);
+
+    screenshotController.captureAndSave(path, fileName: fileName);
+
+    print("screenshot taken");
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -132,16 +162,37 @@ class _PracticeScreenState extends State<PracticeScreen> {
             ),
             Expanded(
               child: ListView(
+                controller: _scrollController,
                 children: [
                   buildQuestion(),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: buildButton(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      //buildScreenShotButton(),
+                      buildButton(),
+                    ],
                   )
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildScreenShotButton() {
+    return InkWell(
+      onTap: () {
+        //takeScreenshot();
+      },
+      child: Container(
+        width: size.height * 0.055,
+        height: size.height * 0.055,
+        margin: EdgeInsets.only(left: 10),
+        child: FittedBox(
+          child: MediaFinder.getImage("screenshot.png"),
+          fit: BoxFit.contain,
         ),
       ),
     );
@@ -216,6 +267,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
           submitted = false;
           isNew = true;
           index++;
+          scrollToTop();
         });
       } else {
         goToResultScreen();
@@ -247,6 +299,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
           submitted = false;
           isNew = true;
           index++;
+          scrollToTop();
         });
       } else {
         if (widget.mode == Mode.EXAM) {
